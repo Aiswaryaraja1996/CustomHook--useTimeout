@@ -1,23 +1,19 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { ReadyContext } from "./context/readyContext";
+import useTimeout from "./hooks/useTimeout";
+import { useContext} from "react";
 
 function App() {
+  const [ready, setReady] = useContext(ReadyContext);
+
+  useTimeout(20000);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Custom Hook - useTimeout</h1>
+
+      <p>The ready state will change after {20000 / 1000} seconds.</p>
+      <h2>Ready State : {ready ? "True" : "False"}</h2>
     </div>
   );
 }
